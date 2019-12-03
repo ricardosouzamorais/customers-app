@@ -1,0 +1,4 @@
+enum PhoneState {
+    VALID,
+    INVALID,
+}

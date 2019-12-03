@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Customer List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>Phone Number State</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers | async">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.country}}</td>
+            <td>{{customer.phone}}</td>
+            <td>{{customer.phoneNumberState}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

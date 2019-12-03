@@ -2,7 +2,8 @@
 
 ## Database
 
-A refactoring was done on the provided SQLite database file for adding a column to represent the country and make easier to do the filter.
+A refactoring was done on the provided SQLite database file for adding a column to represent the country and make easier to do the filter through country name.<br/>
+The same was not done regarding the phone number sate (VALID or INVALID) because it was better to implement at service layer and make it possible to reuse it in a CRUD scenario.
 
 The script is located at: [microservice/src/main/resources/database/db-refactor.sql](microservice/src/main/resources/database/db-refactor.sql)
 

@@ -49,6 +49,7 @@ public class CustomerController {
 			throws ResourceNotFoundException {
 		Customer customer = customerRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Customer not found for this id :: " + id));
+		
 		return ResponseEntity.ok().body(customer);
 	}
 

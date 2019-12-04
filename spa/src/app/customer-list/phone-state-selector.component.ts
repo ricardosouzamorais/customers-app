@@ -4,8 +4,8 @@ import { PhoneState } from "../phone-state";
 @Component({
   selector: 'phone-state-selector',
   template: `
-    <select (childEvent)="test($event)" (change)="filterByPhoneNumberState($event.target.value)" id="filterPhoneNumberStateInput">
-      <option selected>All</option>
+    <select (change)="filterByPhoneNumberState($event.target.value)" id="filterPhoneNumberStateInput">
+      <option selected>All one...</option>
       <option *ngFor="let state of keys(phoneStates)" [ngValue]="phoneStates[state]">{{state}}</option>
     </select>
   `

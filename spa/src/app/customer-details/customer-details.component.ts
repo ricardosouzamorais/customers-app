@@ -15,14 +15,14 @@ export class CustomerDetailsComponent implements OnInit {
   customer: Customer;
 
   constructor(private route: ActivatedRoute,private router: Router,
-    private employeeService: CustomerService) { }
+    private customerService: CustomerService) { }
 
   ngOnInit() {
     this.customer = new Customer();
 
     this.id = this.route.snapshot.params['id'];
     
-    this.employeeService.getCustomer(this.id)
+    this.customerService.getCustomer(this.id)
       .subscribe(data => {
         console.log(data)
         this.customer = data;

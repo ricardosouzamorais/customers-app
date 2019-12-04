@@ -30,7 +30,12 @@ In case want to override the database file, please, copy the new file to [micros
 
 ## The Customer SPA
 
+Both dev (`environment.ts`) and prod (`environment.prod.ts`) files are pointing to the url `http://localhost:8080/customers-api/v1/customers` as the configuration for accessing the back-end.
+In case another IP or port is needed, these files have to be change and a new build process has to be done again. 
+
 ### Building
+
+For generating the image:
 
 ```bash
 cd spa
@@ -39,9 +44,13 @@ docker build -t ricardosouzamorais/customers-spa:0.0.1 .
 
 ### Running
 
+For running the image:
+
 ```bash
 docker run -p 3000:80 ricardosouzamorais/customers-spa:0.0.1
 ```
+
+For accessing the SPA: http://localhost:3000
 
 <br/><hr/>
 

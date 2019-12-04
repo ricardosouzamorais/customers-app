@@ -11,6 +11,7 @@
             <th>Country</th>
             <th>Phone</th>
             <th>Phone Number State</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -20,6 +21,8 @@
             <td>{{customer.country}}</td>
             <td>{{customer.phone}}</td>
             <td>{{customer.phoneNumberState}}</td>
+            <td><button (click)="customerDetails(customer.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
           </tr>
         </tbody>
       </table>

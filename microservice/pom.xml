@@ -12,13 +12,15 @@
 
 	<groupId>com.assignment</groupId>
 	<artifactId>customers-microservice</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>customers-microservice</name>
 	<description>Microservice for assignment</description>
 
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding> UTF-8 </project.build.sourceEncoding>
+		<dockerfile.maven.version>1.4.13</dockerfile.maven.version>
+		<project.docker.repository>ricardosouzamorais</project.docker.repository>
 	</properties>
 
 	<dependencies>
@@ -68,10 +70,32 @@
 	</dependencies>
 
 	<build>
+		<finalName>customers-microservice</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>${dockerfile.maven.version}</version>
+				<configuration>
+					<repository>${project.docker.repository}/customers-microservice</repository>
+					<tag>${project.version}</tag>
+					<buildArgs>
+						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
+					<writeTestMetadata>false</writeTestMetadata>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

@@ -35,7 +35,7 @@ In case another IP or port is needed, these files have to be change and a new bu
 
 ### Building
 
-For generating the image:
+For generating the image (also on Docker Hub):
 
 ```bash
 cd spa
@@ -50,6 +50,12 @@ For running the image:
 docker run -p 3000:80 ricardosouzamorais/customers-spa:0.0.1
 ```
 
+To run it as detached (without hanging the terminal):
+
+```bash
+docker run -d -p 3000:80 ricardosouzamorais/customers-spa:0.0.1
+```
+
 For accessing the SPA: http://localhost:3000
 
 <br/><hr/>
@@ -59,7 +65,7 @@ The API can be viewed at: http://localhost:8080/customers-api/swagger-ui.html
 
 ### Building
 
-*  Ajustar para buildar o docker
+For generating the image (also on Docker Hub):
 
 ```bash
 mvn clean package
@@ -67,14 +73,14 @@ mvn clean package
 
 ### Usage
 
-In case want to use just the microservice endpoint directly can go this on the following way:
+For running the image:
 
 ```bash
 docker run -p 8080:8080 \
 		ricardosouzamorais/customers-microservice:0.0.1
 ```
 
-To run it as detached (wtihout hanging the terminal):
+To run it as detached (without hanging the terminal):
 ```bash
 docker run -d -p 8080:8080 \
 		ricardosouzamorais/customers-microservice:0.0.1
@@ -82,7 +88,7 @@ docker run -d -p 8080:8080 \
 
 ### Custom database file
 
-In case you want to provide an external SQLite database file and independently of name, you can do this way:
+In case you want to provide an external SQLite database file and independently of name, you can do this way (not detached):
 
 ```bash
 docker run \
@@ -115,3 +121,6 @@ docker run \
    *  http://localhost:8080/customers-api/v1/customers/search/findByCountry?name=${COUNTRY_NAME}
 *  Return all customers filtering by customer's phone number state (VALID or INVALID)
    *  http://localhost:8080/customers-api/v1/customers/search/findByPhoneState?state=${PHONE_NUMBER_STATE}
+
+
+##

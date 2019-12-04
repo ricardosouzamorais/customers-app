@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { PhoneStateSelectorComponent } from './customer-list/phone-state-selector.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerDetailsComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    PhoneStateSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,6 +22,11 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+    CustomerDetailsComponent,
+    CustomerListComponent,
+    PhoneStateSelectorComponent,
+  ]
 })
 export class AppModule { }

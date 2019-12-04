@@ -1,30 +1,48 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">
-      <h2>Customer List</h2>
+<div class='card'>
+    <div class='card-header'>
+      Customer List
     </div>
-    <div class="panel-body">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Country</th>
-            <th>Phone</th>
-            <th>Phone Number State</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let customer of customers | async">
-            <td>{{customer.id}}</td>
-            <td>{{customer.name}}</td>
-            <td>{{customer.country}}</td>
-            <td>{{customer.phone}}</td>
-            <td>{{customer.phoneNumberState}}</td>
-            <td><button (click)="customerDetails(customer.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div class='card-body'>
+        <div class="row">
+            <div class="col">
+                <div class="col-3">
+                  Country:
+                </div>
+                <div class="col-6">
+                  <input [(ngModel)]="countryFilter" type="text" class="form-control" id="filterCountryInput" placeholder="Country name (exactly match)">
+                </div>
+                <div class="col-3">
+                  Phone Number State: 
+                </div>
+                <div class="col-6">
+                    <phone-state-selector (searchByPhoneState)="searchByPhoneState($event)">loading</phone-state-selector>
+                </div>
+            </div>
+        </div>
+        <div class='table-responsive'>
+          <table class='table'>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Country</th>
+                  <th>Phone</th>
+                  <th>Phone Number State</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let customer of customers | async">
+                  <td>{{customer.id}}</td>
+                  <td>{{customer.name}}</td>
+                  <td>{{customer.country}}</td>
+                  <td>{{customer.phone}}</td>
+                  <td>{{customer.phoneState}}</td>
+                  <td><button (click)="customerDetails(customer.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+      </div>
   </div>
+</div>

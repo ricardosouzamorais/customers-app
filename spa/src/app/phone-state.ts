@@ -1,4 +1,4 @@
-enum PhoneState {
-    VALID,
-    INVALID,
+export enum PhoneState {
+  VALID = "VALID",
+  INVALID = "INVALID",
 }

@@ -1,5 +1,16 @@
 # Customer Application
 
+## Requirements
+
+The following list of tools are needed to build and run this application:
+
+*  Docker 19.03.4+
+*  git 2.17.2+
+*  Maven 3.2.5+
+*  OpenJDK 11.0.5+
+
+<br/><hr/>
+
 ## Database
 
 A refactoring was done on the provided SQLite database file for adding a column to represent the country and make easier to do the filter through country name.<br/>
@@ -10,6 +21,10 @@ The script is located at: [microservice/src/main/resources/database/db-refactor.
 ### For Testing
 
 The H2 is used for testing purposes and is automatically loaded due to Spring `@DataJpaTest` annotation.
+
+### Database location
+
+In case want to override the database file, please, copy the new file to [microservice/src/main/resources/database/db-refactor.sql](microservice/src/main/resources/database), beforing [running the build for the backend](#building-1), but make sure to keep its name, ***customers.db***.
 
 <br/><hr/>
 
@@ -36,7 +51,10 @@ The API can be viewed at: http://localhost:8080/customers-api/swagger-ui.html
 ### Building
 
 *  Ajustar para buildar o docker
-mvn clean package docker:build
+
+```bash
+mvn clean package
+```
 
 ### Usage
 
@@ -44,6 +62,38 @@ In case want to use just the microservice endpoint directly can go this on the f
 
 ```bash
 docker run -p 8080:8080 \
+		ricardosouzamorais/customers-microservice:0.0.1
+```
+
+To run it as detached (wtihout hanging the terminal):
+```bash
+docker run -d -p 8080:8080 \
+		ricardosouzamorais/customers-microservice:0.0.1
+```
+
+### Custom database file
+
+In case you want to provide an external SQLite database file and independently of name, you can do this way:
+
+```bash
+docker run \
+		-e url="jdbc:sqlite:/app/input/YOUR-DATABASE-FILE-NAME" \
+		-v /path/to/your/external-database-file:/app/input \
+		-p 8080:8080 \
+		ricardosouzamorais/customers-microservice:0.0.1
+```
+
+Where: 
+*  **/path/to/your/external-database-file** - is the path were your database file resides, which is mapped to a volume of the container in `/app/input`
+*  **url** - as environment variable, it is read through `DBConfiguration` to laod the database. Its value has to have the value from the previous example cal, which you can change only **YOUR-DATABASE-FILE-NAME**, like **external.db**
+
+As an example with values filled in:
+
+```bash
+docker run \
+		-e url="jdbc:sqlite:/app/input/external.db" \
+		-v /Users/ricardosm/Downloads/customers:/app/input \
+		-p 8080:8080 \
 		ricardosouzamorais/customers-microservice:0.0.1
 ```
 
